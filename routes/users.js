@@ -28,14 +28,17 @@ router.put('/:username', async function(req, res) {
         msg: `A user with username ${username} Already exist`
       })
     } else {
-      const addUserStatus = await addUser(username);
+      await addUser(username);
       return res.status(200).json({
         status: true,
         msg: 'User added'        
       })
     }
   } catch(err) {
-    throw err;
+    return res.status(500).json({
+      status: false,
+      msg: 'Something went wrong'
+    })
   }
 
 })
@@ -65,7 +68,10 @@ router.get('/:username', async function(req, res) {
       })
     }
   } catch(err) {
-    throw err;
+    return res.status(500).json({
+      status: false,
+      msg: 'Something went wrong'
+    })
   }
 })
 
