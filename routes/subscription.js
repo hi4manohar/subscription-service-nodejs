@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var moment = require('moment');
 
 /* GET users listing. */
 router.post('/', function(req, res, next) {
